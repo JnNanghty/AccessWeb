@@ -1,10 +1,35 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <input type="text" v-model="url">
+    <button @click="go">GO</button>
+    <iframe class="frame" ref="frame"></iframe>
   </div>
-  <router-view/>
 </template>
 
-<style lang="stylus">
+<script>
+
+
+export default {
+  name: 'App',
+  components: {
+
+  },
+  data() {
+    return {
+      url: ''
+    }
+  },
+  methods: {
+    go() {
+      this.$refs.frame.src = this.url;
+    }
+  }
+}
+</script>
+
+<style>
+.frame{
+  width: 100%;
+  height: 100vh;
+}
 </style>
